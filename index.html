@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteka Supabase</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="icon">📚</span>
+                <span>Biblioteka</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-item active">
+                    <span class="icon">🏠</span>
+                    <span>Książki</span>
+                </a>
+                <a class="nav-item" id="refreshDataBtn">
+                    <span class="icon">🔄</span>
+                    <span>Odśwież</span>
+                </a>
+                <a class="nav-item" id="showAllBtn">
+                    <span class="icon">📖</span>
+                    <span>Pokaż wszystko</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input
+                        id="searchInput"
+                        class="search-input"
+                        type="text"
+                        placeholder="Szukaj po tytule, autorze, gatunku lub wydawcy..."
+                    />
+                </div>
+
+                <button class="notification-btn" id="reloadTopBtn" title="Odśwież">
+                    🔄
+                </button>
+            </header>
+
+            <section class="content-area">
+                <div class="content-header">
+                    <h1>Twoja baza książek</h1>
+
+                    <div class="stats-row">
+                        <div class="stat-pill">Książki: <strong id="statBooks">0</strong></div>
+                        <div class="stat-pill">Autorzy: <strong id="statAuthors">0</strong></div>
+                        <div class="stat-pill">Gatunki: <strong id="statGenres">0</strong></div>
+                        <div class="stat-pill">Wydawcy: <strong id="statPublishers">0</strong></div>
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                        <button class="filter-btn" data-filter="recent">Od 2000</button>
+                        <button class="filter-btn" data-filter="classic">Przed 2000</button>
+                    </div>
+
+                    <div id="statusBox" class="status-box">Gotowe do pobrania danych.</div>
+                </div>
+
+                <div id="booksGrid" class="books-grid"></div>
+
+                <div id="showMoreContainer" class="show-more-container hidden">
+                    <button id="showMoreButton" class="show-more-btn">
+                        <span>⬇️</span>
+                        <span>Pokaż więcej</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <aside id="detailPanel" class="detail-panel">
+        <div id="detailPanelContent" class="detail-panel-content"></div>
+    </aside>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteka Supabase</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="icon">📚</span>
+                <span>Biblioteka</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-item active">
+                    <span class="icon">🏠</span>
+                    <span>Książki</span>
+                </a>
+                <a class="nav-item" id="refreshDataBtn">
+                    <span class="icon">🔄</span>
+                    <span>Odśwież</span>
+                </a>
+                <a class="nav-item" id="showAllBtn">
+                    <span class="icon">📖</span>
+                    <span>Pokaż wszystko</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input
+                        id="searchInput"
+                        class="search-input"
+                        type="text"
+                        placeholder="Szukaj po tytule, autorze, gatunku lub wydawcy..."
+                    />
+                </div>
+
+                <button class="notification-btn" id="reloadTopBtn" title="Odśwież">
+                    🔄
+                </button>
+            </header>
+
+            <section class="content-area">
+                <div class="content-header">
+                    <h1>Twoja baza książek</h1>
+
+                    <div class="stats-row">
+                        <div class="stat-pill">Książki: <strong id="statBooks">0</strong></div>
+                        <div class="stat-pill">Autorzy: <strong id="statAuthors">0</strong></div>
+                        <div class="stat-pill">Gatunki: <strong id="statGenres">0</strong></div>
+                        <div class="stat-pill">Wydawcy: <strong id="statPublishers">0</strong></div>
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                        <button class="filter-btn" data-filter="recent">Od 2000</button>
+                        <button class="filter-btn" data-filter="classic">Przed 2000</button>
+                    </div>
+
+                    <div id="statusBox" class="status-box">Gotowe do pobrania danych.</div>
+                </div>
+
+                <div id="booksGrid" class="books-grid"></div>
+
+                <div id="showMoreContainer" class="show-more-container hidden">
+                    <button id="showMoreButton" class="show-more-btn">
+                        <span>⬇️</span>
+                        <span>Pokaż więcej</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <aside id="detailPanel" class="detail-panel">
+        <div id="detailPanelContent" class="detail-panel-content"></div>
+    </aside>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>
